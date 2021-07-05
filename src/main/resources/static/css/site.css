@@ -1,0 +1,41 @@
+body{
+background-color: powderblue;
+}
+table{
+width: 100%;
+border-collapse: collapse;
+border: 1px solid black;
+}
+td{
+border: 1px solid black;
+text-align: center;
+}
+.button {
+  background-color: black;#4CAF50; /* Green */
+  border: 1px solid black;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  cursor: pointer;
+}
+.tic {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+}
+.tac {
+  background-color: maroon;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+}
+.inputcell {
+  background-color: powderblue;
+  color: gray;
+  font-size: 30px;
+  font-weight: bold;
+}

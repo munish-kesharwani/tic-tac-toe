@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Tic-Tac-Toe</title>
+    <link th:href="@{/css/site.css}" rel="stylesheet"/>
+</head>
+<body>
+<h1>Welcome to Tic Tac Toe</h1>
+<h2> <label th:text="${tiles.msgForUser}"></label> </h2>
+
+<!-- big iff game is in progress - present the form -->
+<div th:unless="${tiles.status}=='END'">
+
+<form th:action="@{/tic-tac-toe}" th:object="${tiles}" method="post"  >
+    <input type="hidden" th:field="*{context}" value="${tiles.context}">
+<table>
+
+    <tr th:each="oneSingleRow:${tiles.grid}">
+        <td th:each="oneSingleCell:${oneSingleRow.value}">
+          <div th:switch="${oneSingleCell.cellValue}">
+            <p th:case="'Tic'" class="tic">X</p>
+              <p th:case="'Tac'" class="tac">O</p>
+              <p class="inputcell">
+            <input type=radio th:case="*"  name="userInput"  th:field="*{userInput}"  th:value="${oneSingleCell.cellNumber}" class="inputcell"/>
+              </p>
+          </div>
+
+
+        </td>
+    </tr>
+</table>
+<div>
+    <input type="submit" class="button" value="Submit Move"/>
+</div>
+    <a th:href="@{/tic-tac-toe/}">Click here to restart</a>
+</form>
+
+</div>
+
+<div th:if="${tiles.status}=='END'">
+    <table>
+        <tr th:each="oneSingleRow:${tiles.grid}">
+            <td th:each="oneSingleCell:${oneSingleRow.value}">
+                <div th:switch="${oneSingleCell.cellValue}">
+                    <p th:case="'Tic'" class="tic">X</p>
+                    <p th:case="'Tac'" class="tac">O</p>
+                    <p th:case="*" ></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/tic-tac-toe/}">Click here to play again</a>
+</div>
+
+</body>
+</html>
